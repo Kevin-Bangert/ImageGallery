@@ -13,14 +13,23 @@ class MainApp extends StatelessWidget {
   }
 }
 
+<<<<<<< HEAD
 // Stateful Widget für die Navigation
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+=======
+// Weil sich die angezeigte Seite ändern kann -> StatefulWidget
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  //_HomeScreenState-Instanz, die den Zustand verwaltet
+>>>>>>> 7eefc11 (AppBar & BottomSheet added)
   @override
   HomeScreenState createState() => HomeScreenState();
 }
 
+<<<<<<< HEAD
 class HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
@@ -30,6 +39,24 @@ class HomeScreenState extends State<HomeScreen> {
     const Center(child: Text('Settings')),
   ];
 
+=======
+//  Klasse speichert den aktuellen Zustand der Seite
+class HomeScreenState extends State<HomeScreen> {
+  // Speicherung der ausgewählten Seite
+  // Hier wird gespeichert, welcher Tab gerade aktiv ist
+  // 0 zeigt die erste Seite
+  int _selectedIndex = 0;
+
+  // Liste der möglichen Seiten vom BottonSheet
+  static const List<Widget> _pages = <Widget>[
+    Center(child: Text('Home Page')),
+    Center(child: Text('Gallery')),
+    Center(child: Text('Settings')),
+  ];
+
+  // Methode zur Änderung der Seite
+  // Bei jedem Klick wird der Wert auf den angegebenen Tap gesetzt
+>>>>>>> 7eefc11 (AppBar & BottomSheet added)
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -40,12 +67,22 @@ class HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+<<<<<<< HEAD
         title: const Text("Kevins Gallery"),
         backgroundColor: Colors.deepPurpleAccent,
       ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
+=======
+        title: Text("Kevins Gallery"),
+        backgroundColor: Colors.deepPurpleAccent,
+      ),
+      body: _pages[_selectedIndex], // Je nach Wert wird Seite x angezeigt
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+>>>>>>> 7eefc11 (AppBar & BottomSheet added)
           BottomNavigationBarItem(icon: Icon(Icons.photo), label: 'Gallery'),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
@@ -55,6 +92,7 @@ class HomeScreenState extends State<HomeScreen> {
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.deepPurpleAccent,
         onTap: _onItemTapped,
+<<<<<<< HEAD
       ),
     );
   }
@@ -89,6 +127,8 @@ class GalleryPage extends StatelessWidget {
             ),
           );
         },
+=======
+>>>>>>> 7eefc11 (AppBar & BottomSheet added)
       ),
     );
   }
