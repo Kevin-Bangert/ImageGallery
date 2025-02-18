@@ -74,29 +74,9 @@ class GalleryPage extends StatelessWidget {
           final item = galleryData[index];
           return GestureDetector(
             onTap: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: Text(item.imageTitle),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset(item.imagePath),
-                        const SizedBox(height: 10),
-                        Text(item.imageDescription),
-                      ],
-                    ),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: const Text('Schließen'),
-                      ),
-                    ],
-                  );
-                },
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DetailPage(item: item)),
               );
             },
             child: Column(
@@ -124,6 +104,33 @@ class GalleryPage extends StatelessWidget {
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class DetailPage extends StatelessWidget {
+  final GalleryItem item;
+
+  const DetailPage({super.key, required this.item});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(item.imageTitle),
+        backgroundColor: Colors.deepPurpleAccent,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset(item.imagePath),
+            const SizedBox(height: 10),
+            Text(item.imageDescription),
+          ],
+        ),
       ),
     );
   }
